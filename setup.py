@@ -12,12 +12,12 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/jonesim/django-modals",
     include_package_data = True,
-    packages=['django_modals'],
+    packages=['django_modals', 'crispy_forms', 'crispy_forms.templatetags'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
-    install_requires=['django-ajax-helpers>=0.0.22', 'django-crispy-forms', 'make-html'],
+    install_requires=['django-ajax-helpers>=0.0.22', 'make-html'],
 )

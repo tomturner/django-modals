@@ -1,2 +1,4 @@
 recursive-include django_modals *
+recursive-include crispy_forms *
 recursive-exclude django_modals *.pyc
+recursive-exclude crispy_forms *.pyc
