@@ -99,6 +99,8 @@ def render_crispy_form(form, helper=None, context=None):
 
     render_context = _context_to_dict(context)
     render_context.update(attrs)
+    render_context.setdefault("form_class", attrs.get("attrs", {}).get("class", ""))
+    render_context.setdefault("form_id", attrs.get("attrs", {}).get("id", ""))
     render_context.setdefault("form_show_errors", True)
     render_context.setdefault("form_show_labels", True)
 
@@ -134,7 +136,8 @@ def render_crispy_form(form, helper=None, context=None):
             '<input type="hidden" name="csrfmiddlewaretoken" value="%s">' % csrf_token
         )
     flat_attrs = attrs.get("flat_attrs", "")
-    return mark_safe("<form%s>%s%s</form>" % (flat_attrs, csrf_html, form_html))
+    form_method = attrs.get("form_method", "post")
+    return mark_safe("<form method=\"%s\"%s>%s%s</form>" % (form_method, flat_attrs, csrf_html, form_html))
 
 
 def list_difference(left, right):
