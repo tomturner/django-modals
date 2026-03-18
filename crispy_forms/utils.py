@@ -93,7 +93,8 @@ def render_crispy_form(form, helper=None, context=None):
     from crispy_forms.helper import FormHelper
 
     helper = helper or getattr(form, "helper", None) or FormHelper(form)
-    template_pack = str(getattr(helper, "template_pack", TEMPLATE_PACK))
+    helper_template_pack = getattr(helper, "template_pack", None)
+    template_pack = str(helper_template_pack or get_template_pack())
     attrs = helper.get_attributes(template_pack=template_pack)
 
     render_context = _context_to_dict(context)
